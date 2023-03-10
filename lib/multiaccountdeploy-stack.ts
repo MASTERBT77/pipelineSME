@@ -10,7 +10,8 @@ export class MultiaccountdeployStack extends cdk.Stack {
     const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: 'Sme-Demo',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('brayiyandres/pipelineSME', 'main'),
+        installCommands: ['npm i -g npm@latest'],
+        input: CodePipelineSource.gitHub('MASTERBT77/pipelineSME', 'main'),
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
     });
