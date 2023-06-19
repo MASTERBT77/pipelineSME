@@ -1,0 +1,13 @@
+{
+    "params": {
+        "CI_CD_ACCOUNT": "875332768364",
+        "CI_CD_REGION": "us-east-1",
+        "CI_CD_REPO_NAME": "cdk-pipelines-project",
+        "DEV_ACCOUNT": "268050465834",
+        "DEV_REGION": "us-east-1",
+        "QA_ACCOUNT": "847258583865",
+        "QA_REGION": "us-east-1",
+        "PROD_ACCOUNT": "718587417294",
+        "PROD_REGION": "us-east-1"
+        }
+    }

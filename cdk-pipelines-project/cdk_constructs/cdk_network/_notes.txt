@@ -1,0 +1,38 @@
+cdk init sample-app --language python
+rm app.py
+mv cdk_three_tiers/ lib/
+mv lib/cdk_three_tiers_stack.py lib/cdk_network.py
+## add cdk_network code
+touch setup.py
+## add:
+import setuptools
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="cdk_network",
+    version="0.0.1",
+    description="Networking vpc + 4 subnets",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    author="author",
+    package_dir={"": "lib"},
+    packages=setuptools.find_packages(where="cdk_network"),
+    install_requires=[
+        "aws-cdk-lib==2.69.0",
+        "constructs>=10.0.0,<11.0.0"
+    ],
+)
+
+virtualenv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt 
+
+
+
+
+sg-090cbba958744f8a5 - elb-sg
+
+ami-00c39f71452c08778
+ami-00c39f71452c08778

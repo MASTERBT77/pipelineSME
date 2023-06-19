@@ -1,0 +1,207 @@
+cdk init sample-app --language python
+rm app.py
+mv cdk_three_tiers/ lib/
+mv lib/cdk_three_tiers_stack.py lib/cdk_network.py
+## add cdk_network code
+touch setup.py
+## add:
+import setuptools
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="cdk_network",
+    version="0.0.1",
+    description="Networking vpc + 4 subnets",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    author="author",
+    package_dir={"": "lib"},
+    packages=setuptools.find_packages(where="cdk_network"),
+    install_requires=[
+        "aws-cdk-lib==2.69.0",
+        "constructs>=10.0.0,<11.0.0"
+    ],
+)
+
+virtualenv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt 
+
+cd ..
+mkdir pipeline_artifact && cd pipeline_artifact
+cdk init sample-app --language python
+mkdir constructs
+mv ../cdk_network constructs/cdk_network
+
+rm -Rf constructs/cdk_network/.git
+rm -Rf constructs/cdk_network/.venv/
+
+export PYTHONPATH=""
+export PYTHONPATH=$PYTHONPATH:/Users/ocafredy/Documents/cdk/baby_steps/pipeline_artifact/constructs/cdk_network/lib
+export PYTHONPATH=$PYTHONPATH:/Users/ocafredy/Documents/cdk/baby_steps/pipeline_artifact/constructs/cdk_classic_app/lib
+
+
+
+
+export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
+
+npx cdk bootstrap \
+  --cloudformation-execution-policies arn\:aws\:iam::aws\:policy/AdministratorAccess \
+  aws://$ACCOUNT_ID/us-east-1 \
+  aws://$ACCOUNT_ID/us-east-2
+
+
+
+
+  #!/usr/bin/env python3
+from aws_cdk import (
+    App,
+    Environment
+)
+
+from lib.pipeline_artifact_stack import PipelineArtifactStack
+
+account_id = '875332768364'
+env_target=Environment(account=account_id, region='us-east-1') 
+
+app = App()
+
+target_stack = PipelineArtifactStack(app, 'MyVPC', env=env_target)
+
+app.synth()
+
+
+
+aws codecommit create-repository --repository-name "cdk-pipelines-project" --repository-description "CDK Pipelines Project" --region us-east-1 
+
+git remote add origin https://git-codecommit.us-east-1.amazonaws.com/v1/repos/cdk-pipelines-project
+
+
+git add .
+git commit -m 'Initial application commit'
+git push -u origin main
+
+establecer lo mínimo para saber un definition of Done.
+
+Hacerlo con operaciones y landing zone 
+
+
+
+<?php include "../inc/dbinfo.inc"; ?>
+<html>
+<body>
+<h1>Sample page</h1>
+<?php
+
+  /* Connect to MySQL and select the database. */
+  $connection = mysqli_connect(, "administrator", "4b,giPPgTqzH3.Ne0S-fzdKWHI.rs,");
+
+  
+?>
+
+psql --host=development-myclassic-myclassicmyaurora8fe44d8d-fyuqnbzrrj5c.cluster-cxy9vtcqe7fu.us-east-1.rds.amazonaws.com --port=5432 --username=postgres --password
+
+
+8cW0WeD=z.16yjxvzmqFJ^6G=kjWLX
+
+lxMtvmLw5C^itSB8R6,VF46FA1R=4C
+
+    $connection=pg_connect("host=development-myclassic-myclassicmyaurora8fe44d8d-cgfgwus44kad user=administrator password=4b,giPPgTqzH3.Ne0S-fzdKWHI.rs,");
+    pg_query($connection, "SELECT lastname FROM employees");
+
+
+3Zh6=qLsg=1cdkRIP-YwoSB.04k-V1
+
+T3mpora!
+
+
+
+campo database en el secret 
+
+dbclusteridentifier por dbname 
+
+password complejo cambiarlo
+
+
+sesion, 
+health check cambiar path 
+secret incluir base de datos 
+
+
+dbname, murach
+
+
+compensación:
+-   
+
+Jessica cami y alex
+-   apoyo en la adopción de la 
+
+
+
+¿Qué hacemos?
+    ¿Cuál es nuestro negocio?
+
+    ¿A qué nos dedicamos?
+
+    ¿Cuál es nuestra razón de ser?
+
+    ¿Quiénes son nuestro público objetivo?
+
+    ¿Cuál es nuestro ámbito geográfico de acción?
+
+    ¿Cuál es nuestra ventaja competitiva?
+
+    ¿Qué nos diferencia de nuestros competidores?
+
+Misión 
+-   apoyo en la adopción de la cultura cloud
+-   acompañar al cliente en su camino de aprendizaje en tecnologias cloud.
+
+Visión
+-   Es un buen inicio con los sme, pero deberiamos tener los recursos y tener las personas alineadas talento/necesidades del cliente.
+-   dar a visibilidad a la practica, tal vez con eventos hacia los clientes y hacia a aws
+
+Reglas de equipo
+-   
+
+
+
+
+
+Misión 
+-   apoyo en la adopción de la cultura cloud
+-   acompañar al cliente en su camino de aprendizaje en tecnologias cloud.
+
+Visión
+-   Es un buen inicio con los sme, pero deberiamos tener los recursos y tener las personas alineadas talento/necesidades del cliente.
+-   dar a visibilidad a la practica, tal vez con eventos hacia los clientes y hacia a aws
+
+
+
+aws s3 sync s3://temporal-bucket-sme-project s3://bluage-testing-sme-2023
+
+http://devel-mycla-1nahi9hpm57oo-91858375.us-east-1.elb.amazonaws.com:8080/gapwalk-application/transaction
+
+http://devel-mycla-18pnka4wnjfbf-1687757036.us-east-1.elb.amazonaws.com:8080/gapwalk-application/transaction
+
+http://devel-mycla-18pnka4wnjfbf-1687757036.us-east-1.elb.amazonaws.com:8080/Murach-Forward/#/transaction-runner
+
+
+
+
+
+cdk bootstrap \
+  --cloudformation-execution-policies arn\:aws\:iam::aws\:policy/AdministratorAccess \
+  aws://268050465834/us-east-1 \
+  aws://875332768364/us-east-1 \
+  aws:// /us-east-1
+
+cdk bootstrap --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess aws://875332768364/us-east-1
+
+
+
+
+

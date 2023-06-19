@@ -1,0 +1,5 @@
+pytest==6.2.5
+aws-cdk-lib==2.69.0
+coverage
+pytest-cov
+cdk-nag
